@@ -12,7 +12,7 @@ along the way, how to finish). Works in any language and on any topic.
 ## Install (once, works in every project)
 
 ```bash
-git clone https://github.com/<owner>/pf-skill.git
+git clone https://github.com/yonatanmerhavi-sys/pf-skill.git
 cd pf-skill && ./install.sh
 ```
 
