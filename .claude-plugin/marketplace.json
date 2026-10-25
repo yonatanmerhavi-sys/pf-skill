@@ -1,0 +1,14 @@
+{
+  "name": "pf-skill",
+  "description": "Prompt Forge for Claude Code",
+  "owner": {
+    "name": "yonatanmerhavi-sys"
+  },
+  "plugins": [
+    {
+      "name": "pf",
+      "source": "./plugins/pf",
+      "description": "Turns a rough request into a ready-to-paste prompt plus a guide for steering the conversation."
+    }
+  ]
+}

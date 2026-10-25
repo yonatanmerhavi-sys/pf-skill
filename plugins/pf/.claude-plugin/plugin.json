@@ -1,0 +1,10 @@
+{
+  "name": "pf",
+  "version": "1.0.0",
+  "description": "Prompt Forge: turns a rough request into a ready-to-paste prompt for a new Claude conversation, plus a guide for steering it.",
+  "author": {
+    "name": "yonatanmerhavi-sys"
+  },
+  "repository": "https://github.com/yonatanmerhavi-sys/pf-skill",
+  "keywords": ["prompt", "prompt-engineering", "workflow"]
+}

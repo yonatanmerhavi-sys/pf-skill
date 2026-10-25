@@ -1,27 +1,59 @@
 # pf — Prompt Forge
 
-A Claude Code skill. You write what you want in your own words; it returns a
+A Claude Code plugin. You write what you want in your own words; it returns a
 ready-to-paste prompt for a new Claude conversation plus a short guide for
 steering that conversation (which mode to start in, what to check, what to say
 along the way, how to finish). Works in any language and on any topic.
 
 ```
-/pf I want a landing page for my bakery that takes pre-orders
+/pf:pf I want a landing page for my bakery that takes pre-orders
 ```
 
-## Install (once, works in every project)
+## Install as a plugin (recommended)
+
+Inside Claude Code:
+
+```
+/plugin install pf --marketplace yonatanmerhavi-sys/pf-skill
+```
+
+On older Claude Code versions, two steps:
+
+```
+/plugin marketplace add yonatanmerhavi-sys/pf-skill
+/plugin install pf@pf-skill
+```
+
+Then run `/reload-plugins` or open a new session and type `/pf:pf`.
+Updates arrive through `/plugin` (marketplace → update).
+
+### Cloud sessions (claude.ai/code)
+
+The user folder of a cloud session resets every session. To have `pf` in every
+cloud session of a project, add this to the project's `.claude/settings.json`:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "pf-skill": {
+      "source": { "source": "github", "repo": "yonatanmerhavi-sys/pf-skill" }
+    }
+  },
+  "enabledPlugins": {
+    "pf@pf-skill": true
+  }
+}
+```
+
+## Install without a plugin (shorter command: `/pf`)
 
 ```bash
 git clone https://github.com/yonatanmerhavi-sys/pf-skill.git
 cd pf-skill && ./install.sh
 ```
 
-This copies `pf/` to `~/.claude/skills/pf`. Open a new Claude Code session and
-type `/pf`. To update later: `git pull && ./install.sh`.
-
-Manual install: copy the `pf` folder into `~/.claude/skills/`.
-
-Only for one project: copy it into `<project>/.claude/skills/` instead.
+This copies the skill to `~/.claude/skills/pf`, so you type `/pf` instead of
+`/pf:pf`. To update later: `git pull && ./install.sh`.
 
 ## What you get back
 
@@ -36,10 +68,14 @@ It never does the task itself. Say "go" afterwards if you want it to.
 
 ## בעברית
 
-סקיל ל-Claude Code. כותבים במילים שלכם מה רוצים, ומקבלים פרומפט מוכן להדבקה בשיחה חדשה, ועוד מדריך קצר לניהול השיחה: באיזה מצב להתחיל (למשל plan mode), מה לבדוק, מה להגיד בדרך ואיך לסיים.
+פלאגין ל-Claude Code. כותבים במילים שלכם מה רוצים, ומקבלים פרומפט מוכן להדבקה בשיחה חדשה, ועוד מדריך קצר לניהול השיחה: באיזה מצב להתחיל (למשל plan mode), מה לבדוק, מה להגיד בדרך ואיך לסיים.
 
-**התקנה:** `git clone` לריפו, ואז `./install.sh`. אפשר גם להעתיק ידנית את התיקייה `pf` אל `~/.claude/skills/`. אחר כך פותחים שיחה חדשה וכותבים:
+**התקנה כפלאגין:** בתוך Claude Code כותבים:
+```
+/plugin install pf --marketplace yonatanmerhavi-sys/pf-skill
+```
+ואז מפעילים עם `/pf:pf` ואחריו מה שרוצים.
 
-```
-/pf אני רוצה ...
-```
+**התקנה בלי פלאגין** (הפקודה יוצאת קצרה יותר, `/pf`): עושים `git clone` לריפו ומריצים `./install.sh`.
+
+**שיחות בענן:** מוסיפים לפרויקט את קטע ה-`settings.json` שמופיע למעלה, והפלאגין יהיה זמין בכל שיחה בענן של אותו פרויקט.
